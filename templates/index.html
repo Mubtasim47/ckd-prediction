@@ -20,19 +20,19 @@
 
         h1,
         h2 {
-            color: white;
+            color: #FFF5EE;
             text-align: center;
         }
 
         form {
-            background-color: rgb(79, 169, 204);
+            background-color: #D65076;
             max-width: 800px;
             border-radius: 7px;
             padding: 25px;
         }
 
         .form-title {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .item-group {
@@ -57,7 +57,7 @@
 
         button {
             width: 100%;
-            background-color: #a74444;
+            background-color:#805993;
             color: white;
             padding: 14px 20px;
             margin: 8px 10px;
@@ -69,7 +69,11 @@
         }
 
         button:hover {
-            background-color: #923131;
+            background-color: #734c87;
+        }
+
+        .test-outcome {
+            color: #7bf57b;
         }
     </style>
 </head>
@@ -125,7 +129,7 @@
             <br>
             <button type="submit">Predict</button>
             <h2>
-                {{ prediction_text }}
+                Diagnosis Result : <span class="test-outcome">{{ prediction_text }}</span>
             </h2>
         </form>
     </div>
