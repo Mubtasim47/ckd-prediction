@@ -1,19 +1,55 @@
 <!DOCTYPE html>
-<html >
+<html>
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
+
 <head>
     <meta charset="UTF-8">
     <title>CKD Prediction</title>
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <style>
-        input[type=text], select {
+        body {
+            background-image: url('./images/kidney.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+            padding: 50px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1,
+        h2 {
+            color: whitesmoke;
+            text-align: center;
+        }
+
+        form {
+            background-color: rgb(79, 169, 204);
+            max-width: 800px;
+            border-radius: 7px;
+            padding: 25px;
+        }
+
+        .form-title {
+            margin-bottom: 30px;
+        }
+
+        .item-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 20px;
+        }
+
+        input[type=text] {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
-            display: inline-block;
+            margin-right: 5px;
+            margin-left: 5px;
+            display: inline;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
@@ -21,57 +57,79 @@
 
         button {
             width: 100%;
-            background-color: #4CAF50;
+            background-color: rgb(108, 94, 237);
             color: white;
             padding: 14px 20px;
-            margin: 8px 0;
+            margin: 8px 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: large;
+            font-weight: 600;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: rgb(82, 68, 209);
         }
     </style>
 </head>
 
 <body>
     <div class="login">
-        <h1>Chronic Kidney Disease Prediction</h1>
-
         <!-- Main Input For Receiving Query to the ML -->
         <form action="{{ url_for('predict') }}" method="post">
-            <input type="text" name="Age" placeholder="Age (Ag)" required="required" />
-            <input type="text" name="Blood_Pressure" placeholder="Blood Pressure (Bp)" required="required" />
-            <input type="text" name="Specific_Gravity" placeholder="Specific Gravity (Sg)" required="required" />
-            <input type="text" name="Albumin" placeholder="Albumin (Al)" required="required" /><br>
-            <input type="text" name="Sugar" placeholder="Sugar (Su)" required="required" />
-            <input type="text" name="Red_Blood_Cells" placeholder="Red Blood Cells (Rbc)" required="required" />
-            <input type="text" name="Pus_Cell" placeholder="Pus Cell (Pc)" required="required" />
-            <input type="text" name="Pus_Cell_Clumps" placeholder="Pus Cell Clumps (Pcc)" required="required" /><br>
-            <input type="text" name="Bacteria" placeholder="Bacteria (Ba)" required="required" />
-            <input type="text" name="Blood_Glucose_Random" placeholder="Blood Glucose Random (Bgr)" required="required" />
-            <input type="text" name="Blood_Urea" placeholder="Blood Urea (Bu)" required="required" />
-            <input type="text" name="Serum_Creatinine" placeholder="Serum Creatinine (Sc)" required="required" /><br>
-            <input type="text" name="Sodium" placeholder="Sodium (Sod)" required="required" />
-            <input type="text" name="Potassium" placeholder="Potassium (Pot)" required="required" />
-            <input type="text" name="Hemoglobin" placeholder="Hemoglobin (Hemo)" required="required" />
-            <input type="text" name="Packed_Cell_Volume" placeholder="Packed Cell Volume (Pcv)" required="required" /><br>
-            <input type="text" name="White_Blood_Cell_Count" placeholder="White Blood Cell Count (Wbcc)" required="required" />
-            <input type="text" name="Red_Blood_Cell_Count" placeholder="Red Blood Cell Count (Rbcc)" required="required" />
-            <input type="text" name="Hypertension" placeholder="Hypertension (Htn)" required="required" />
-            <input type="text" name="Diabetes_Mellitus" placeholder="Diabetes Mellitus (Dm)" required="required" /><br>
-            <input type="text" name="Coronary_Artery_Disease" placeholder="Coronary Artery Disease (Cad)" required="required" />
-            <input type="text" name="Appetite" placeholder="Appetite (Appet)" required="required" />
-            <input type="text" name="Pedal Edema" placeholder="Pedal Edema (Pe)" required="required" />
-            <input type="text" name="Anemia" placeholder="Anemia (Ane)" required="required" /><br>
+            <h1 class="form-title">Chronic Kidney Disease Prediction</h1>
+            <div class="item-group">
+                <input type="text" name="Age" placeholder="Age" required="required" />
+                <input type="text" name="Blood_Pressure" placeholder="Blood Pressure" required="required" />
+                <input type="text" name="Specific_Gravity" placeholder="Specific Gravity" required="required" />
+                <input type="text" name="Albumin" placeholder="Albumin" required="required" />
+            </div>
+            <div class="item-group">
+                <input type="text" name="Sugar" placeholder="Sugar" required="required" />
+                <input type="text" name="Red_Blood_Cells" placeholder="Red Blood Cells" required="required" />
+                <input type="text" name="Pus_Cell" placeholder="Pus Cell" required="required" />
+                <input type="text" name="Pus_Cell_Clumps" placeholder="Pus Cell Clumps" required="required" />
+            </div>
+
+            <div class="item-group">
+                <input type="text" name="Bacteria" placeholder="Bacteria" required="required" />
+                <input type="text" name="Blood_Glucose_Random" placeholder="Blood Glucose Random" required="required" />
+                <input type="text" name="Blood_Urea" placeholder="Blood Urea" required="required" />
+                <input type="text" name="Serum_Creatinine" placeholder="Serum Creatinine" required="required" />
+
+            </div>
+
+            <div class="item-group">
+                <input type="text" name="Sodium" placeholder="Sodium" required="required" />
+                <input type="text" name="Potassium" placeholder="Potassium" required="required" />
+                <input type="text" name="Hemoglobin" placeholder="Hemoglobin" required="required" />
+                <input type="text" name="Packed_Cell_Volume" placeholder="Packed Cell Volume" required="required" />
+            </div>
+
+            <div class="item-group">
+                <input type="text" name="White_Blood_Cell_Count" placeholder="White Blood Cell Count"
+                    required="required" />
+                <input type="text" name="Red_Blood_Cell_Count" placeholder="Red Blood Cell Count" required="required" />
+                <input type="text" name="Hypertension" placeholder="Hypertension" required="required" />
+                <input type="text" name="Diabetes_Mellitus" placeholder="Diabetes Mellitus" required="required" />
+            </div>
+
+            <div class="item-group">
+                <input type="text" name="Coronary_Artery_Disease" placeholder="Coronary Artery Disease"
+                    required="required" />
+                <input type="text" name="Appetite" placeholder="Appetite" required="required" />
+                <input type="text" name="Pedal Edema" placeholder="Pedal Edema" required="required" />
+                <input type="text" name="Anemia" placeholder="Anemia" required="required" />
+            </div>
+            <br>
             <button type="submit">Predict</button>
+            <h2>
+                {{ prediction_text }}
+            </h2>
         </form>
-       <br><br>
-       <h3>
-           {{ prediction_text }}
-       </h3>
     </div>
+
 </body>
+
 </html>
