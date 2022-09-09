@@ -17,7 +17,7 @@ def predict():
     final_features = [np.array(float_features)]
     prediction = model.predict(final_features)
     value = "Positive" if prediction[0] == 1 else "Negative"
-    return render_template('index.html', prediction_text='Diagnosis Result: {}'.format(value))
+    return render_template('index.html', prediction_text='{}'.format(value))
 
 
 if __name__ == "__main__":
